@@ -441,8 +441,10 @@ celltrek <- function (st_sc_int, int_assay='traint', sc_data=NULL, sc_assay='RNA
   sc_out@images <- st_sc_int@images
   sc_out@images[[1]]@assay <- DefaultAssay(sc_out)
   sc_out@images[[1]]@coordinates <- data.frame(imagerow=sc_coord$coord_x, imagecol=sc_coord$coord_y) %>% set_rownames(sc_coord$id_new)
-  sc_out@images[[1]]@scale.factors$spot_dis <- dist_res$spot_d
-  sc_out@images[[1]]@scale.factors$spot_dis_intp <- spot_dis_intp
+
+  #remove these code for slide-seq images
+  #sc_out@images[[1]]@scale.factors$spot_dis <- dist_res$spot_d
+  #sc_out@images[[1]]@scale.factors$spot_dis_intp <- spot_dis_intp
 
   output <- list(celltrek=sc_out)
   if (keep_model) {
